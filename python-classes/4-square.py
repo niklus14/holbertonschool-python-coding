@@ -1,28 +1,26 @@
 #!/usr/bin/python3
 """
-this module defines a class Square with getters and setters.
-it demonstrates centralized data validation using python properties.
+defines a class Square with validation, area calculation, and printing.
+it demonstrates how to visualize object state.
 """
 
 
 class Square:
     """
-    it represents a square with strict size validation.
+    represents a square with strict size validation.
 
     attributes:
-        __size (int): the size of the square (private).
+        __size (int): The size of the square (private).
     """
+
     def __init__(self, size=0):
         """
         initializes the square using the setter.
 
         args:
-            size (int): the size of the square. defaults to 0.
+            size (int): The size of the square. Defaults to 0.
         """
-        # key change: it assigns to 'self.size', not 'self.__size'.
-        # this ensures the validation logic in the setter runs immediately
-        # when the object is created
-        self.__size = size
+        self.size = size
 
     @property
     def size(self):
@@ -30,7 +28,7 @@ class Square:
         retrieves the size of the square.
 
         returns:
-            int: the current size.
+            int: The current size.
         """
         return self.__size
 
@@ -40,20 +38,16 @@ class Square:
         sets the size of the square with validation.
 
         args:
-            value (int): the new size
+            value (int): The new size.
 
         raises:
-            TypeError: if value is not an integer.
-            ValueError: if value is less than 0.
+            TypeError: If value is not an integer.
+            ValueError: If value is less than 0.
         """
-        # 1st. type validation
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        # 2nd. value validation
         if value < 0:
             raise ValueError("size must be >= 0")
-
-        # 3rd. secure update
         self.__size = value
 
     def area(self):
@@ -64,3 +58,18 @@ class Square:
             int: the area of the square.
         """
         return self.__size ** 2
+
+    def my_print(self):
+        """
+        prints the square with the character #.
+        if size is 0, prints an empty line.
+        """
+        if self.__size == 0:
+            print()
+            return
+
+        # loop for rows
+        for i in range(self.__size):
+            # loop for columns (or just print the string multiplied)
+            # in python, "#" * 3 results in "###"
+            print("#" * self.__size)
