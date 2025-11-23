@@ -4,9 +4,10 @@ this module defines a class Square with input validation.
 it demonstrates how to sanitize data during object instantiation.
 """
 
+
 class Square:
     """
-    represnts a square with strict input validation.
+    represents a square with strict input validation.
 
     attributes:
         __size (int): the size of the square (private).
@@ -19,7 +20,7 @@ class Square:
         args:
             size (int): the size of the square. defaults to 0.
 
-        raizes:
+        raises:
             TypeError: if size is not an integer.
             ValueError: if size less than 0.
         """
